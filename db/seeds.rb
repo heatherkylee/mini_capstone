@@ -8,5 +8,4 @@
 
 5.times do
   product = Product.create(name: Faker::Dessert.variety, price: Faker::Number.between(5, 20), description: Faker::Dessert.flavor, image: "")
-  product.save
 end
