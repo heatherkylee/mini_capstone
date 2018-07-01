@@ -8,6 +8,10 @@ Rails.application.routes.draw do
     get "/products" => "products#index"
     # will create a new product
     post "/products" => "products#create"
+    # will update an existing product in the db
+    patch "products/:id" => "products#update"
+    # will delete an existing product in the db
+    delete "products/:id" => "products#destroy"
     #Make some routes to display JSON for a handful of individual products
     # get "/lastproduct" => "products#get_last"
   end
