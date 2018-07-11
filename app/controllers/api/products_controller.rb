@@ -8,7 +8,14 @@ class Api::ProductsController < ApplicationController
 
   # will show all products
   def index
-    @products = Product.all
+    # Shows all products in ascending order by ID
+
+    user_input = params[:api_search]
+    if user_input
+      @products = Product.where("name LIKE ?", "%#{user_input}%").order(:id)
+    else
+      @products = Product.all.order(:id)
+    end
     render "index.json.jbuilder"
   end
 
