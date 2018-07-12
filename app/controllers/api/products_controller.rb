@@ -8,11 +8,9 @@ class Api::ProductsController < ApplicationController
 
   # will show all products
   def index
-    # Shows all products in ascending order by ID
-
     user_input = params[:api_search]
     if user_input
-      @products = Product.where("name LIKE ?", "%#{user_input}%").order(:id)
+      @products = Product.where("LOWER(name) LIKE ?", "%#{user_input.downcase}%").order(:id)
     else
       @products = Product.all.order(:id)
     end
@@ -54,10 +52,10 @@ class Api::ProductsController < ApplicationController
     @product1.destroy
     render json: {message: "You have deleted the product"}
   end
-
+end
   #below method is for bonus (Make some routes to display JSON for a handful of individual products)
   # def get_last
   #   @product_last = Product.last
   #   render "last_product_view.json.jbuilder"
   # end
-end
+# end
