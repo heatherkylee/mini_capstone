@@ -4,8 +4,9 @@ json.price product.price
 json.tax product.tax
 json.product_total product.total
 json.description product.description
-json.image product.image 
 json.discounted product.is_discounted?
 
 #display supplier info
 json.supplier product.supplier
+json.images product.image
+#images refers to the key, image refers to the model

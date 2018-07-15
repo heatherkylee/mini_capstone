@@ -10,7 +10,7 @@ class Api::ProductsController < ApplicationController
   def index
     user_input = params[:api_search]
     if user_input
-      @products = Product.where("LOWER(name) LIKE ?", "%#{user_input.downcase}%").order(:id)
+      @products = Product.where("name LIKE ?", "%#{user_input}%").order(:id)
     else
       @products = Product.all.order(:id)
     end
@@ -22,6 +22,7 @@ class Api::ProductsController < ApplicationController
     @product1 = Product.new(
       name: params[:input_name],
       price: params[:input_price],
+      supplier: params[:supplier_id],
       description: params[:input_description],
       image: params[:input_image]
     )
@@ -37,6 +38,7 @@ class Api::ProductsController < ApplicationController
     # to modify the particular product 
     @product1.name = params[:input_name] || @product1.name
     @product1.price = params[:input_price] || @product1.price
+    @product1.price = params[:input_supplier] || @product1.supplier
     @product1.description = params[:input_description] || @product1.description
     @product1.image = params[:input_image] || @product1.image
     @product1.save

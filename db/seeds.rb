@@ -14,20 +14,25 @@
 # supplier2 = Supplier.create(name: "Starbux", email: "star@bux.com", phone_number: "4564564567")
 
 # associate the products with a supplier 
-
-suppliers = Supplier.all
-products = Product.all
-
-products.each do |product|
-  product.supplier_id = suppliers.sample.id
-  product.save
-end
-
-# same as above
-
 # suppliers = Supplier.all
 # products = Product.all
 
 # products.each do |product|
-#   product.update(:supplier_id => suppliers.sample.id)
+#   product.supplier_id = suppliers.sample.id
+#   product.save
 # end
+
+# same as above
+# products.each do |product|
+
+# suppliers = Supplier.all
+# products = Product.all
+
+# product.update(:supplier_id => suppliers.sample.id)
+# end
+
+# Add images
+# image1 = Image.create(name: "cheesy french fries, string ", url: "https://gardengyrosonline.com/wp-content/uploads/2018/01/cheese-fries.jpg")
+# image2 = Image.create(name: "cheesy french fries, steak", url: "http://assets.kraftfoods.com/recipe_images/Cheesy-Tex-Mex-French-Fries-37521.jpg")
+# image3 = Image.create(name: "cheesy french fries, tots", url: "http://www.naivecookcooks.com/wp-content/uploads/2014/11/Cheesy-Goodness-of-Roasted-Veggies-Tater-Tots-Mac-and-Cheese.jpg")
+

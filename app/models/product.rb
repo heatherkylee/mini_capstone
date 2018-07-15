@@ -12,6 +12,11 @@ class Product < ApplicationRecord
   end
 
   def supplier
+    # return supplier for this product
     Supplier.find_by(id: supplier_id)
+  end
+
+  def image
+    Image.where(product_id: id)
   end
 end

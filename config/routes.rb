@@ -14,5 +14,8 @@ Rails.application.routes.draw do
     delete "products/:id" => "products#destroy"
     #Make some routes to display JSON for a handful of individual products
     # get "/lastproduct" => "products#get_last"
+    
+    post "/users" => "users#create"
+    post "/sessions" => "sessions#create"
   end
 end
