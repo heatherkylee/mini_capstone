@@ -8,11 +8,20 @@ class Api::ProductsController < ApplicationController
 
   # will show all products
   def index
-    user_input = params[:api_search]
-    if user_input
-      @products = Product.where("name LIKE ?", "%#{user_input}%").order(:id)
+    # *** START: This will order products by ID ****
+    # user_input = params[:api_search]
+    # if user_input
+    #   @products = Product.where("name LIKE ?", "%#{user_input}%").order(:id)
+    # else
+    #   @products = Product.all.order(:id)
+    # end
+    # *** END: This is the end where order products by ID ****
+
+    if params[:category]
+      category = Category.find_by(name: params[:category])
+      @products = category.products
     else
-      @products = Product.all.order(:id)
+      @products = Product.all
     end
     render "index.json.jbuilder"
   end

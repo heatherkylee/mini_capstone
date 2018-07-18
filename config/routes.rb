@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # STEP 1: A ROUTE triggers a controller action
   # verb "/urls" => "namespace/controllers#action"
   namespace :api do
+    # PRODUCTS
     # will display only a specific product
     get "/products/:id" => "products#show"
     # will display all products
@@ -14,8 +15,13 @@ Rails.application.routes.draw do
     delete "products/:id" => "products#destroy"
     #Make some routes to display JSON for a handful of individual products
     # get "/lastproduct" => "products#get_last"
-    
+
+    #CREATE USERS/SESSIONS
     post "/users" => "users#create"
     post "/sessions" => "sessions#create"
+
+    #ORDERS
+    get "/orders/:id" => "orders#show"
+    post "/orders" => "orders#create"
   end
 end
