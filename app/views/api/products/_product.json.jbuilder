@@ -8,6 +8,6 @@ json.discounted product.is_discounted?
 # json.categories product.categories
 
 #display supplier info
-# json.supplier product.supplier
+json.supplier product.supplier
 # json.images product.image
 #images refers to the key, image refers to the model

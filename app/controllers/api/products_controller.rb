@@ -21,7 +21,7 @@ class Api::ProductsController < ApplicationController
       category = Category.find_by(name: params[:category])
       @products = category.products
     else
-      @products = Product.all
+      @products = Product.all.order(:id)
     end
     render "index.json.jbuilder"
   end
