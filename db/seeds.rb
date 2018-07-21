@@ -36,3 +36,9 @@
 # image2 = Image.create(name: "cheesy french fries, steak", url: "http://assets.kraftfoods.com/recipe_images/Cheesy-Tex-Mex-French-Fries-37521.jpg")
 # image3 = Image.create(name: "cheesy french fries, tots", url: "http://www.naivecookcooks.com/wp-content/uploads/2014/11/Cheesy-Goodness-of-Roasted-Veggies-Tater-Tots-Mac-and-Cheese.jpg")
 
+# Add images using faker
+# products = Product.all
+
+# products.each do |product|
+#   Image.create(url: Faker::Avatar.image("my-own-slug", "50x50"), product_id: product.id)
+# end
