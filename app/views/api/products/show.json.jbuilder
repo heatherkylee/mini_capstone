@@ -1,4 +1,4 @@
-json.partial! 'product', product:@product1
+json.partial! 'product', product: @product1
 # json.name @product1.name
 # json.price @product1.price
 # json.tax @product1.tax
