@@ -1,4 +1,5 @@
 class Api::ProductsController < ApplicationController
+  # before_action :authenticate_admin, except: [:index, :show]
   #will show a specific product
   def show
     product_id = params[:id]
@@ -31,17 +32,23 @@ class Api::ProductsController < ApplicationController
     @product1 = Product.new(
       name: params[:input_name],
       price: params[:input_price],
-      supplier: params[:supplier_id],
-      description: params[:input_description],
-      image: params[:input_image]
+      supplier_id: params[:supplier_id],
+      description: params[:input_description]
     )
-    @product1.save
-    render "show.json.jbuilder"
+    if @product1.save
+      render "show.json.jbuilder"
+    else
+      p "*" * 20
+      p @product1
+      p @product1.errors.full_messages
+      p "*" * 20
+      render json: {errors: @product1.errors.full_messages}, status: :unprocessible_entity
+    end
   end  
 
   # will update an existing product in the db
   def update
-     product_id = params[:id]
+    product_id = params[:id]
     # get a particular product from the db
     @product1 = Product.find_by(id: product_id)
     # to modify the particular product 

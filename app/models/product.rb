@@ -7,6 +7,14 @@ class Product < ApplicationRecord
   has_many :users, through: :carted_products
   has_many :orders, through: :carted_products #because we deleted product_id from orders
 
+  validates :name, presence: true
+  validates :price, presence: true
+  validates :description, presence: true
+  validates :name, uniqueness: true
+  validates :price, numericality: { greater_than: 0 }
+  validates :description, length: { in: 10..500 }
+
+
   
   def is_discounted?
     price < 10
