@@ -1,5 +1,7 @@
 {
   "name": "mini_capstone",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "eslint": "^5.2.0"
+  }
 }
