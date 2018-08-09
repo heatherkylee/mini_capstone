@@ -5,7 +5,8 @@ var HomePage = {
   data: function() {
     return {
       message: "Welcome to Vue.js!",
-      products: []
+      products: [],
+      images: []
     };
   },
   created: function() {
