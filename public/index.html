@@ -28,10 +28,10 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#/">Home <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="#/test">Test</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -73,16 +73,16 @@
       <div class="col-sm-4">
         <div class="card" style="width: 18rem;">
           <div class="card-body">
-            <h5 class="card-title">{{ products.name }}</h5>
-            <p class="card-text">{{ products }}</p>
-            <p class="id">id: 1</p>
-            <p class="supplier">supplier: Dunkin' Donuts</p>
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">{{ product.description}}</p>
+            <p class="id">id: {{ product.id}}</p>
+            <p class="supplier">supplier: {{ product.supplier.name}}</p>
             <!-- conditional statement, if product is discounted -->
-            <p style="color:red;">Discounted item</p>
+            <!-- <p style="color:red;">Discounted item</p> -->
             <!-- else conditional -->
-            <p>Everyday value</p>
+            <!-- <p>Everyday value</p> -->
             <!-- end if if/else -->
-            <p>price: 10.00</p>
+            <p>price: {{ product.price}}</p>
             <!-- loop through product images to show the first image only -->
                 <p>Image: <img style="width: 50px" src=""></p>
             <!-- end of loop -->
@@ -92,5 +92,11 @@
       </div>   
     <!-- loop ends -->
     </div>
+  </div>
+</template>
+
+<template id="test-page">
+  <div class="vue-component">
+    {{ message }}
   </div>
 </template>
