@@ -107,13 +107,88 @@ var LogoutPage = {
   }
 };
 
+var NewProductPage = {
+  template: "#new-product-page",
+  data: function() {
+    return {
+      Name: "",
+      Price: "",
+      Description: "",
+      Supplier: "",
+      errors: []
+    };
+  },
+  methods: {
+    submit: function() {
+      var params = {
+        input_name: this.name,
+        input_price: this.price,
+        input_description: this.description,
+        supplier_id: this.supplier
+      };
+      axios
+        .post("/api/products", params)
+        .then(function(response) {
+          router.push("/");
+        })
+        .catch(
+          function(error) {
+            this.errors = error.response.data.errors;
+          }.bind(this)
+        );
+    }
+  }
+};
+
+var CartedProductsPage = {
+  template: "#carted-products-page",
+  data: function() {
+    return {
+      message: "Items in Your Cart",
+      cartedProducts: [],
+      images: []
+    };
+  },
+  created: function() {
+    console.log("load when the page loads");
+    axios.get("/api/carted_products").then(function(response) {
+      console.log(response.data);
+      this.cartedProducts = response.data;
+    }.bind(this));
+  },
+  methods: {},
+  computed: {}
+};
+
+var OrderPage = {
+  template: "#order-page",
+  data: function() {
+    return {
+      message: "Order Summary",
+      orders: []
+    };
+  },
+  created: function() {
+    console.log("load when the page loads");
+    axios.get("/api/orders/").then(function(response) {
+      console.log(response.data);
+      this.orders = response.data;
+    }.bind(this));
+  },
+  methods: {},
+  computed: {}
+};
+
 var router = new VueRouter({
   routes: [
     { path: "/", component: HomePage },
     { path: "/test", component: TestPage },
     { path: "/signup", component: SignupPage },
     { path: "/login", component: LoginPage },
-    { path: "/logout", component: LogoutPage }
+    { path: "/logout", component: LogoutPage },
+    { path: "/products/new", component: NewProductPage },
+    { path: "/carted_products", component: CartedProductsPage },
+    { path: "/orders/", component: OrderPage }
   ],
   scrollBehavior: function(to, from, savedPosition) {
     return { x: 0, y: 0 };
