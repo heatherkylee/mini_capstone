@@ -179,6 +179,80 @@ var OrderPage = {
   computed: {}
 };
 
+var ProductsPage = {
+  template: "#products-index-page",
+  data: function() {
+    return {
+      message: "Products",
+      products: [],
+      images: []
+    };
+  },
+  created: function() {
+    console.log("load when the page loads");
+    axios.get("/api/products").then(function(response) {
+      console.log(response.data);
+      this.products = response.data;
+    }.bind(this));
+  },
+  methods: {},
+  computed: {}
+};
+
+var ProductPage = {
+  template: "#product-show-page",
+  data: function() {
+    return {
+      message: "Test Product",
+      product: {
+        name: "",
+        description: "",
+        id: "",
+        supplier: "",
+        price: "",
+        image: "",
+      },
+    };
+  },
+  created: function() {
+    console.log("load when the page loads");
+    console.log(this.$route.params.id);
+    axios.get("/api/products/" + this.$route.params.id).then(function(response) {
+      console.log(response.data);
+      this.product = response.data;
+    }.bind(this));
+  },
+  methods: {},
+  computed: {}
+};
+
+var ProductEditPage = {
+  template: "#product-edit-page",
+  data: function() {
+    return {
+      message: "Edit Product",
+      product: {
+        name: "",
+        description: "",
+        id: "",
+        supplier: "",
+        price: "",
+        image: "",
+      },
+    };
+  },
+  created: function() {
+    console.log("load when the page loads");
+    console.log(this.$route.params.id);
+    axios.get("/api/products/" + this.$route.params.id).then(function(response) {
+      console.log(response.data);
+      this.product = response.data;
+    }.bind(this));
+  },
+  methods: {},
+  computed: {}
+};
+
 var router = new VueRouter({
   routes: [
     { path: "/", component: HomePage },
@@ -188,7 +262,10 @@ var router = new VueRouter({
     { path: "/logout", component: LogoutPage },
     { path: "/products/new", component: NewProductPage },
     { path: "/carted_products", component: CartedProductsPage },
-    { path: "/orders/", component: OrderPage }
+    { path: "/orders/", component: OrderPage },
+    { path: "/products", component: ProductsPage },
+    { path: "/products/:id", component: ProductPage },
+    { path: "/products/:id/edit", component: ProductEditPage }
   ],
   scrollBehavior: function(to, from, savedPosition) {
     return { x: 0, y: 0 };

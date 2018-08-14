@@ -210,3 +210,61 @@
     </div>
   </div>
 </template>
+
+<template id="products-index-page">
+  <div class="vue-component">
+    <!-- loop starts -->
+    <h5>{{message}}</h5>
+    <div v-for="product in products">
+      <div class="col-sm-4">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">{{ product.description}}</p>
+            <p class="id">id: {{ product.id}}</p>
+            <p class="supplier">supplier: {{ product.supplier.name}}</p>
+            <!-- conditional statement, if product is discounted -->
+            <!-- <p style="color:red;">Discounted item</p> -->
+            <!-- else conditional -->
+            <!-- <p>Everyday value</p> -->
+            <!-- end if if/else -->
+            <p>price: {{ product.price }}</p>
+            <div v-for="image in product.images">
+              <img style="width:50px; height:50px;" v-bind:src="image.url">
+            </div> 
+            <a href="/client/products/1 %>" class="btn btn-primary">Go to the product page</a>
+          </div>
+        </div>
+      </div>   
+    <!-- loop ends -->
+    </div>
+  </div>
+</template>
+
+<template id="product-show-page">
+  <div class="vue-component">
+    <!-- loop starts -->
+    <h5>{{message}}</h5>
+    <div class="col-sm-4">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-text">{{ product.description}}</p>
+          <p class="id">id: {{ product.id}}</p>
+          <p class="supplier">supplier: {{ product.supplier.name}}</p>
+          <!-- conditional statement, if product is discounted -->
+          <!-- <p style="color:red;">Discounted item</p> -->
+          <!-- else conditional -->
+          <!-- <p>Everyday value</p> -->
+          <!-- end if if/else -->
+          <p>price: {{ product.price }}</p>
+          <div v-for="image in product.images">
+            <img style="width:50px; height:50px;" v-bind:src="image.url">
+          </div> 
+          <a v-bind:href="'/#/products/' + product.id + '/edit'"  class="btn btn-primary">Edit Product</a>
+        </div>
+      </div>
+    </div>   
+  <!-- loop ends -->
+  </div>
+</template>
